@@ -144,7 +144,6 @@ namespace BlackjackCsTest
             Random rnd = new Random();
             dealer.score = rnd.Next(15, 21);
 
-            //should I try to turn this whole section into a function? Or divide it into two functions?
             while (player.score <= 21 || choice != "n")
             {
                 Console.WriteLine("\nDealing your card...");
@@ -214,14 +213,14 @@ namespace BlackjackCsTest
                 card.value = 10;
             }
             //ace card gimmick. +1 if score > 11, +11 if score <= 11
-            //NOTE: Find a way where if we have more than 2 Ace cards, their value become 1. If that's how blackjack works.
+            //NOTE: Find a way where if we have more than 2 Ace cards, the ones that gave 11 points become 1 point. If that's how blackjack works.
             else if (card.faceIndex == 1)
             {
-                if (player.score > 11)
+                if (player.score >= 11)
                 {
                     card.value = 1;
                 }
-                else if (player.score <= 11)
+                else if (player.score < 11)
                 {
                     card.value = 11;
                 }
@@ -253,7 +252,6 @@ namespace BlackjackCsTest
             player.roundsPlayed += 1;
         }
 
-        //consider shortening/dividing this method
         static int MoneyBet(Player player, Player dealer)
         {
             //add betting money
@@ -275,7 +273,7 @@ namespace BlackjackCsTest
                 player.bet = Convert.ToInt32(input);
                 if (player.bet > player.money)
                 {
-                    Console.WriteLine("You cannot bet more than you have!");
+                    Console.WriteLine("You cannot bet more than what you have!");
                 }
                 else if (player.bet <= 0)
                 {
@@ -312,7 +310,7 @@ namespace BlackjackCsTest
             {
                 player.money += (betSum / 2);
                 dealer.money += (betSum / 2);
-                Console.WriteLine("You have drawn.");
+                Console.WriteLine("Your balance remains unchanged.");
             }
             Console.WriteLine("Current amount of money: ${0}", player.money);
         }
