@@ -5,4 +5,4 @@ The game is a simple version of a Blackjack game. The player bets a certain amou
 
 In this game, the player has to pull random cards from the deck, which allows them to obtain between 1 and 11 points. 
 
-The player wins if they obtain more points than the dealer while having less than or equal to 21 points.
+The player wins the round and money if they obtain more points than the dealer while having less than or equal to 21 points.
